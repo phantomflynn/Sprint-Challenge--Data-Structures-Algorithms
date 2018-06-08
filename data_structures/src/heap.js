@@ -1,4 +1,18 @@
-const heapsort = (arr) => {
+const heapsort = (arr) => {  
+  const heap = new Heap();
+  const sorted = Array(arr.length);
+
+  for (i = 0; i < arr.length; i++) {
+    heap.insert(arr[i]);
+  }
+
+  for (i = arr.length - 1; i > -1; i--) {
+    sorted[i] = heap.delete();
+  }
+
+  return sorted;
+  
+  /*
   let result = [];
 
   const heap = new Heap();
@@ -15,8 +29,8 @@ const heapsort = (arr) => {
     heap.siftDown(0);
   }
 
-  // console.log(result)
   return result.reverse();
+  */
   
 };
 
