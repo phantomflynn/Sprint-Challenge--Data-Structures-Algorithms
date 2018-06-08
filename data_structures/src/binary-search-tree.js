@@ -1,3 +1,8 @@
+/* 
+RECURSION
+  * follows the rule of Last In, First Out (LIFO)
+*/
+
 class BinarySearchTree {
   constructor(value) {
     this.value = value;
@@ -6,21 +11,46 @@ class BinarySearchTree {
   }
 
   depthFirstForEach(cb) {
+    // `this` is equal to the current constructor
 
-    const recurse = node => {
-      cb(node.value);
-      if (node.left) recurse(node.left);
-      if (node.right) recurse(node.right);
+    /* Basic Recursion Strategy */
+    cb(this.value);
+    if (this.left) this.left.depthFirstForEach(cb);
+    if (this.right) this.right.depthFirstForEach(cb);
+  
+
+    /* 
+    Iterative Strategy
+
+    const stack = [];
+    stack.push(this);
+
+    while (stack.length) {
+      const currentNode = stack.pop(); // most recent node added to stack
+
+      // left-to-right order - right node needs to be pushed to the stack first
+      if (currentNode.right) stack.push(currentNode.right);
+      if (currentNode.left) stack.push(currentNode.left);
+      cb(currentNode.value);
     }
-    
-    // `this` is equal to the constructor
-    // in this case, the constructor represents the root
-    // value: 5, left: { ... value: 2 ... }, right: { ... value: 7 ... }
-    return recurse(this);
+    */
 
   }
 
   breadthFirstForEach(cb) {
+    const queue = [this];
+
+    while (queue.length) {
+      const currentNode = queue.shift();
+
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
+
+      cb(currentNode.value);
+    }
+    
+    /* Recursive Strategy
+
     const queue = [this];
 
     const recurse = () => {
@@ -35,15 +65,7 @@ class BinarySearchTree {
     }
 
     return recurse();
-    
-    // while (queue.length > 0) {
-    //   const node = queue.shift();
-
-    //   cb(node.value);
-      
-    //   if (node.left) queue.push(node.left);
-    //   if (node.right) queue.push(node.right);
-    // }
+    */
     
   }
 
