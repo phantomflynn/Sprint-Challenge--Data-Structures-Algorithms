@@ -41,11 +41,17 @@
 **2-b.** Suppose that you have an _n_-story building and plenty of eggs. Suppose also that an egg is broken if it is thrown off floor _f_ or higher, and unbroken otherwise. Devise a strategy to determine the value off such that the number of dropped eggs is minimized.
   * use binary search to find the correct floor (where the eggs wont break)
   * binary search complexity is `O(log(n))`
-```
-  const brokenEggs = (n_stories, f_threshold) => {
 
-  }
-```
+  * start at `f' = n/2`
+  * if the egg breaks, set `f' = f'/2`
+  * if the egg does not break, set `f' = 3f'/2`
+
+  * `binary sectioning` is the best method for going from an aproximate value to an exact value
+  * "i have no idea what the first floor is that will break the egg, so let's just choose the middle floor!"
+  * if the egg breaks, you can check the floor below, or you could take the halfway point again, which is 1/4 of the way up the building
+  * thinking about looking up a word in the dictionary...
+    * if you know what you're looking for, and you open to a page that isn't the right one, you wouldn't just turn the next page...you would skip a chunk of the book!
+    * if you end up overshooting, you can skip back in smaller amounts
 
 #
 
