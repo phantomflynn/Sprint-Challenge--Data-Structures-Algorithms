@@ -48,41 +48,28 @@ class BinarySearchTree {
   }
 
   insert(value) {
-    const newNode = new BinarySearchTree(value);
     if (value < this.value) {
-      if (!this.left) {
-        this.left = newNode;
-      } else {
-        this.left.insert(value);
-      }
-    } else if (value >= this.value) {
-      if (!this.right) {
-        this.right = newNode;
-      } else {
-        this.right.insert(value);
-      }
+      if (!this.left) this.left = new BinarySearchTree(value);
+      else this.left.insert(value);
+    } 
+    
+    else {
+      if (!this.right) this.right = new BinarySearchTree(value);
+      else this.right.insert(value);
     }
   }
 
   contains(target) {
-    if (this.value === target) {
-      return true;
-    }
-    if (this.left) {
-      if (this.left.contains(target)) {
-        return true;
-      }
-    }
-    if (this.right) {
-      if (this.right.contains(target)) {
-        return true;
-      }
-    }
+    if (this.value === target) return true;
+
+    if (this.left && this.left.contains(target)) return true;
+    if (this.right && this.right.contains(target)) return true;
+
     return false;
   }
 
   getMax() {
-    if (!this) return null;
+    if (!this) return null;    
 
     let max = this.value;
     let current = this;
