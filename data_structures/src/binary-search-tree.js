@@ -12,7 +12,10 @@ class BinarySearchTree {
       if (node.left) recurse(node.left);
       if (node.right) recurse(node.right);
     }
-  
+    
+    // `this` is equal to the constructor
+    // in this case, the constructor represents the root
+    // value: 5, left: { ... value: 2 ... }, right: { ... value: 7 ... }
     return recurse(this);
 
   }
