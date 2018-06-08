@@ -1,5 +1,22 @@
 const heapsort = (arr) => {
-  /* Your code here */
+  let result = [];
+
+  const heap = new Heap();
+  arr.forEach(item => heap.insert(item));
+  
+  while (heap.storage.length > 0) {
+    let root = heap.storage[0]
+    let last = heap.storage[heap.storage.length - 1];
+
+    result.push(root);
+
+    [root, last] = [last, root];
+    heap.delete(); // delete last element
+    heap.siftDown(0);
+  }
+  
+  console.log(result)
+  return result.reverse();
   
 };
 

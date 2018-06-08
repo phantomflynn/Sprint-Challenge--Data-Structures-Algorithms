@@ -6,8 +6,8 @@ class BinarySearchTree {
   }
 
   depthFirstForEach(cb) {
-    /* Your code here */
-    
+
+  
   }
 
   breadthFirstForEach(cb) {
