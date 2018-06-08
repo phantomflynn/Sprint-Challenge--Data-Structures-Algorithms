@@ -1,10 +1,14 @@
+/* 
+  bubbleUp and siftDown are worst case O(n)
+*/
+
 const heapsort = (arr) => {  
   const heap = new Heap();
-  const sorted = Array(arr.length);
+  const sorted = Array(arr.length); // O(n)
 
   for (i = 0; i < arr.length; i++) {
     heap.insert(arr[i]);
-  }
+  } // O(n)
 
   for (i = arr.length - 1; i > -1; i--) {
     sorted[i] = heap.delete();

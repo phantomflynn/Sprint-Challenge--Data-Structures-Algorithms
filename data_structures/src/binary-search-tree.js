@@ -1,6 +1,7 @@
 /* 
 RECURSION
   * follows the rule of Last In, First Out (LIFO)
+  * each recursive call adds a new "frame" to the callstack
 */
 
 class BinarySearchTree {
