@@ -22,15 +22,28 @@ class BinarySearchTree {
 
   breadthFirstForEach(cb) {
     const queue = [this];
-    
-    while (queue.length > 0) {
-      const node = queue.shift();
 
+    const recurse = () => {
+      if (queue.length === 0) return;
+
+      const node = queue.shift();
       cb(node.value);
-      
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
+
+      return recurse();
     }
+
+    return recurse();
+    
+    // while (queue.length > 0) {
+    //   const node = queue.shift();
+
+    //   cb(node.value);
+      
+    //   if (node.left) queue.push(node.left);
+    //   if (node.right) queue.push(node.right);
+    // }
     
   }
 
