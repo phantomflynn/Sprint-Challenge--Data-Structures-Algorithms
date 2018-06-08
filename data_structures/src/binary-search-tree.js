@@ -7,12 +7,28 @@ class BinarySearchTree {
 
   depthFirstForEach(cb) {
 
+    const recurse = node => {
+      cb(node.value);
+      if (node.left) recurse(node.left);
+      if (node.right) recurse(node.right);
+    }
   
+    return recurse(this);
+
   }
 
   breadthFirstForEach(cb) {
-    /* Your code here */
+    const queue = [this];
+    
+    while (queue.length > 0) {
+      const node = queue.shift();
 
+      cb(node.value);
+      
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    
   }
 
   insert(value) {

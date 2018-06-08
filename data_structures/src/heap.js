@@ -11,11 +11,11 @@ const heapsort = (arr) => {
     result.push(root);
 
     [root, last] = [last, root];
-    heap.delete(); // delete last element
+    heap.delete();
     heap.siftDown(0);
   }
-  
-  console.log(result)
+
+  // console.log(result)
   return result.reverse();
   
 };
